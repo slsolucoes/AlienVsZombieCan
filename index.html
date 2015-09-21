@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--Blue Ararainha by JegueBauer Pvnll98 & gitmao-->
+<!-- Ararinha azul em perigo-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jogo</title>
+</head>
+<body onLoad='init()' onKeyDown='entrada(window.event.keyCode)'>
+    <canvas id="meuCanvas" width=900 height=600>
+        Seu navegador não suporta este recurso
+    </canvas>
+</body>
+</html>
+<script Language="JavaScript">
+	s1frame = 0;
+	var player = {
+		altura:61,
+		largura:46,
+		posx:0,
+		posy:0,
+		csprite:new Image(),
+		pwhey:0,
+		pmalto:0,
+		pgluta:0,
+		poutrasparadas:0,
+		pfrango:0,
+		pbatatadoce:0,
+		monstraopoints:0
+	};
+	
+	player.csprite.src = 'images/sprite.png';
+	var sx = [0,44,92,138,184,230,276];
+	var sy = [0,61,122,183,244,305,366];
+	var crop = [0,0];
+	var animst = 0;
+	function init(){
+		canvas = document.getElementById("meuCanvas");
+		ctx = canvas.getContext("2d");
+		setInterval( update, 50);
+	}
+	//Executado +- 30 vezes por segundo
+	function update(){
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.drawImage(player.csprite,crop[0],crop[1],player.largura,player.altura,player.posx,player.posy,player.largura,player.altura);
+	}		
+		
+	//Direções Movimentos
+	function entrada(direction){
+		//Cima = 87 - 38 | Baixo = 83 - 40
+		if(direction == 87){
+			player.posy = player.posy - 10;
+			animst = animst + 1;
+			if(animst > 3){
+			animst = 0
+			}
+			crop[0] = sx[animst];
+			crop[1] = sy[3];
+		}
+		if(direction == 83){
+			player.posy = player.posy + 10;
+			animst = animst + 1;
+			if(animst > 3){
+			animst = 0
+			}
+			crop[0] = sx[animst];
+			crop[1] = sy[0];
+		}
+		//Esquerda = 65 - 37 | Direita = 68 - 39
+		if(direction == 65){
+			player.posx = player.posx - 10;
+			animst = animst + 1;
+			if(animst > 3){
+			animst = 0
+			}
+			crop[0] = sx[animst];
+			crop[1] = sy[2];
+		}
+		if(direction == 68){
+			player.posx = player.posx + 10;
+			animst = animst + 1;
+			if(animst > 3){
+			animst = 0
+			}
+			crop[0] = sx[animst];
+			crop[1] = sy[6];
+		}
+	}
+	</script>
