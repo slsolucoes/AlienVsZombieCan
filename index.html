@@ -65,7 +65,21 @@
         }
         if(pAlien.posy > 535){
             pAlien.posy = 534.5;
-        }      
+        }  
+        
+        if(pZombie.posx < 20){
+            pZombie.posx = 20.5;
+        }
+        if(pZombie.posy < 25){
+            pZombie.posy = 25.5;
+        }
+        if(pZombie.posx > 790){
+            pZombie.posx = 789.5;
+        }
+        if(pZombie.posy > 528){
+            pZombie.posy = 527.5;
+        }  
+        
 
         ctx.drawImage(pAlien.csprite,crop[0],crop[1],pAlien.largura,pAlien.altura,pAlien.posx,pAlien.posy,pAlien.largura,pAlien.altura);
 
@@ -115,8 +129,8 @@
 			}
 			crop[0] = pa[animst];
 			crop[1] = pa[6];            
-		}
-//---------------- ZOMBIE
+		}        
+        //---------------- ZOMBIE
         if(direction == 87){
 			pZombie.posy = pZombie.posy - 10;
 			animstz = animstz + 1;
@@ -155,5 +169,13 @@
 			cropz[0] = pz[animstz];
 			cropz[1] = pz[1];            
 		}
+        var fodac = 0;
+        // 114 - R | 120 - X6
+        if(direction == 114){
+            fodac = 1;
+        }
+        if(direction == 120){
+            fodac = 1;
+        }
 	}
 	</script>
