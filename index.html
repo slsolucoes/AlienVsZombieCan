@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--Blue Ararainha by JegueBauer Pvnll98 & gitmao-->
 <!-- Ararinha azul em perigo-->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,20 +17,40 @@
 	var pZombie = {
 		altura:64,
 		largura:64,
-		posx:300,
-		posy:300,
+		posx:0,
+		posy: 0,
+        bombas: 0,
 		csprite:new Image()
 	};
     var pAlien = {
         altura:57,
         largura:57,
-        posx:200,
-        posy:200,
+        posx:790,
+        posy: 528,
+        bombas: 0,
         csprite:new Image()
     };
+
     var bomba = {
         altura:55,
-        largura:55,
+        largura: 55,
+        posx1:0,
+        posy1: 0,
+
+        posx2:0,
+        posy2: 0,
+
+        posx3:0,
+        posy3: 0,
+
+        posx4:0,
+        posy4: 0,
+
+        posx5:0,
+        posy5: 0,
+
+        posx6:0,
+        posy6:0,
         csprite:new Image()
     };
 
@@ -39,10 +59,8 @@
 	pAlien.csprite.src = 'images/alien.png';
     bomba.csprite.src = 'images/bomba.png';
 	
-    var pz = [0,64,128,192,256,320];
-	
-    var pa = [0,57,114,171,228,285,342,399,456];
-    
+    var pz = [0,64,128,192,256,320];	
+    var pa = [0,57,114,171,228,285,342,399,456];    
     var bo = [0,55,110,165,220];
     
 	var crop = [0,0];
@@ -51,7 +69,13 @@
 	var animst = 0;
     var animstz = 0;
     var animstb = 0;
-    
+
+    var crop1 = [0, 0];
+    var crop2 = [0, 0];
+    var crop3 = [0, 0];
+    var crop4 = [0, 0];
+    var crop5 = [0, 0];
+    var crop6 = [0, 0];
 	
 	function init(){
         
@@ -59,6 +83,7 @@
 		ctx = canvas.getContext("2d");
 		setInterval( update, 50);
 	}
+
 	//Executado +- 30 vezes por segundo
 	function update(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -89,19 +114,38 @@
             pZombie.posy = 527.5;
         }  
         
-
         ctx.drawImage(pAlien.csprite,crop[0],crop[1],pAlien.largura,pAlien.altura,pAlien.posx,pAlien.posy,pAlien.largura,pAlien.altura);
-
         ctx.drawImage(pZombie.csprite,cropz[0],cropz[1],pZombie.largura,pZombie.altura,pZombie.posx,pZombie.posy,pZombie.largura,pZombie.altura);
         
-        
-
-        
+        if(pAlien.bombas == 1){
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
+        }
+        else if (pAlien.bombas == 2) {
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
+        }
+        else if (pAlien.bombas == 3) {
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx3, bomba.posy3, bomba.largura, bomba.altura);
+        }
+        if (pZombie.bombas == 1) {
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
+        }
+        else if (pZombie.bombas == 2) {
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
+        }
+        else if (pZombie.bombas == 3) {
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx6, bomba.posy6, bomba.largura, bomba.altura);
+        }        
 	}		
 		  
 	//Direções Movimentos
 	function entrada(direction){
-
+	    //alert(direction);
 		//Cima = 87 - 38 | Baixo = 83 - 40
 		if(direction == 38){
 			pAlien.posy = pAlien.posy - 10;
@@ -140,7 +184,8 @@
 			}
 			crop[0] = pa[animst];
 			crop[1] = pa[6];            
-		}        
+		}
+
         //---------------- ZOMBIE
         if(direction == 87){
 			pZombie.posy = pZombie.posy - 10;
@@ -180,22 +225,38 @@
 			cropz[0] = pz[animstz];
 			cropz[1] = pz[1];            
 		}
-        var fodac = 0;
-        // 114 - R | 120 - X6
-        if(direction == 114){
-          fodac = 1;
+
+
+        // 90 - Z | 88 - X
+        if(direction == 90){
+            if (pAlien.bombas == 0) {
+                pAlien.bombas += 1;
+                bomba.posx1 = pAlien.posx;
+                bomba.posy1 = pAlien.posy + 15;
+            } else if (pAlien.bombas == 1) {
+                pAlien.bombas += 1;
+                bomba.posx2 = pAlien.posx;
+                bomba.posy2 = pAlien.posy + 15;
+            } else if (pAlien.bombas == 2) {
+                pAlien.bombas += 1;
+                bomba.posx3 = pAlien.posx;
+                bomba.posy3 = pAlien.posy + 15;
+            }
         }
-        if(direction == 120){
-            ctx.drawImage(bomba.csprite,cropb[0],cropb[1],bomba.largura,bomba.altura,bomba.posx,bomba.posy,bomba.largura,bomba.altura);
-            bomba.posx = 100;
-            bomba.posy = 100;
-            animstb = animstb + 1;
-            if(animstb > 5){
-			animstb = 0;
-			}
-			cropb[0] = pb[animstb];
-			cropb[1] = pb[1]; 
-        
+        if(direction == 88){
+            if (pZombie.bombas == 0) {
+                pZombie.bombas += 1;
+                bomba.posx4 = pZombie.posx;
+                bomba.posy4 = pZombie.posy + 17.5;
+            } else if (pZombie.bombas == 1) {
+                pZombie.bombas += 1;
+                bomba.posx5 = pZombie.posx;
+                bomba.posy5 = pZombie.posy + 17.5;
+            } else if (pZombie.bombas == 2) {
+                pZombie.bombas += 1;
+                bomba.posx6 = pZombie.posx;
+                bomba.posy6 = pZombie.posy + 17.5;
+            }
         }
 	}
 	</script>
