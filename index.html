@@ -28,20 +28,29 @@
         posy:200,
         csprite:new Image()
     };
-    
+    var bomba = {
+        altura:55,
+        largura:55,
+        csprite:new Image()
+    };
 
     var vplayer = 0;
 	pZombie.csprite.src = 'images/zombie.png';
 	pAlien.csprite.src = 'images/alien.png';
+    bomba.csprite.src = 'images/bomba.png';
 	
     var pz = [0,64,128,192,256,320];
 	
     var pa = [0,57,114,171,228,285,342,399,456];
     
+    var bo = [0,55,110,165,220];
+    
 	var crop = [0,0];
     var cropz = [0,0];
+    var cropb = [0,0];
 	var animst = 0;
     var animstz = 0;
+    var animstb = 0;
     
 	
 	function init(){
@@ -84,6 +93,8 @@
         ctx.drawImage(pAlien.csprite,crop[0],crop[1],pAlien.largura,pAlien.altura,pAlien.posx,pAlien.posy,pAlien.largura,pAlien.altura);
 
         ctx.drawImage(pZombie.csprite,cropz[0],cropz[1],pZombie.largura,pZombie.altura,pZombie.posx,pZombie.posy,pZombie.largura,pZombie.altura);
+        
+        
 
         
 	}		
@@ -172,10 +183,19 @@
         var fodac = 0;
         // 114 - R | 120 - X6
         if(direction == 114){
-            fodac = 1;
+          fodac = 1;
         }
         if(direction == 120){
-            fodac = 1;
+            ctx.drawImage(bomba.csprite,cropb[0],cropb[1],bomba.largura,bomba.altura,bomba.posx,bomba.posy,bomba.largura,bomba.altura);
+            bomba.posx = 100;
+            bomba.posy = 100;
+            animstb = animstb + 1;
+            if(animstb > 5){
+			animstb = 0;
+			}
+			cropb[0] = pb[animstb];
+			cropb[1] = pb[1]; 
+        
         }
 	}
 	</script>
