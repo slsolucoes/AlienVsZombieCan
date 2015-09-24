@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--Blue Ararainha by JegueBauer Pvnll98 & gitmao-->
 <!-- Ararinha azul em perigo-->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,22 +53,36 @@
         posy6:0,
         csprite:new Image()
     };
+    
+    var poderZ1 = {
+        altura:32,
+        largura:32,
+        posx:0,
+        posy:0,
+        csprite:new Image()
+    };
 
     var vplayer = 0;
 	pZombie.csprite.src = 'images/zombie.png';
 	pAlien.csprite.src = 'images/alien.png';
     bomba.csprite.src = 'images/bomba.png';
+    poderZ1.csprite.src = 'images/poder.png';
+    
 	
     var pz = [0,64,128,192,256,320];	
     var pa = [0,57,114,171,228,285,342,399,456];    
     var bo = [0,55,110,165,220];
+    var z1 = [0,32,64,96,128];
     
 	var crop = [0,0];
     var cropz = [0,0];
     var cropb = [0,0];
+    var cropz1 = [0,0];
 	var animst = 0;
     var animstz = 0;
     var animstb = 0;
+    var animstz1 = 0;
+    
 
     var crop1 = [0, 0];
     var crop2 = [0, 0];
@@ -76,6 +90,23 @@
     var crop4 = [0, 0];
     var crop5 = [0, 0];
     var crop6 = [0, 0];
+    
+    var sSecs = 0;
+    var sMins = 0;
+    var sHors = 0;
+    
+    function getSecs(){
+	sSecs++;
+	if(sSecs==60){sSecs=0;sMins++;
+    if(sMins<=9)sMins="0"+sMins;
+    }
+	if(sMins==60){sMins="0"+0;sHors++;
+    if(sHors<=9)sHors="0"+sHors;
+	}
+	if(sSecs<=9)sSecs="0"+sSecs;
+    setTimeout('getSecs()',1000);
+
+	}
 	
 	function init(){
         
@@ -99,7 +130,9 @@
         }
         if(pAlien.posy > 535){
             pAlien.posy = 534.5;
-        }  
+        }
+        
+       
         
         if(pZombie.posx < 20){
             pZombie.posx = 20.5;
@@ -116,31 +149,54 @@
         
         ctx.drawImage(pAlien.csprite,crop[0],crop[1],pAlien.largura,pAlien.altura,pAlien.posx,pAlien.posy,pAlien.largura,pAlien.altura);
         ctx.drawImage(pZombie.csprite,cropz[0],cropz[1],pZombie.largura,pZombie.altura,pZombie.posx,pZombie.posy,pZombie.largura,pZombie.altura);
+        ctx.drawImage(poderZ1.csprite,cropz1[0],cropz1[1],poderZ1.largura,poderZ1.altura,poderZ1.posx,poderZ1.posy,poderZ1.largura,poderZ1.altura);
         
         if(pAlien.bombas == 1){
+            
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
+            
+        
         }
         else if (pAlien.bombas == 2) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
+            
+            
+            
         }
         else if (pAlien.bombas == 3) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx3, bomba.posy3, bomba.largura, bomba.altura);
+            
         }
         if (pZombie.bombas == 1) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
+            
         }
         else if (pZombie.bombas == 2) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
+            
         }
         else if (pZombie.bombas == 3) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx6, bomba.posy6, bomba.largura, bomba.altura);
-        }        
+            
+        } 
+        if (sSecs == 3){
+            alert("Deu 3 segundos, hora do ataque");
+            poderZ1.posx = bomba.posx;
+            poderZ1.posy = bomba.posy;
+            getSecs().break;
+            animstz1 = animstz1 + 1;
+			if(animstz1 > 3){
+			animstz1 = 0
+			}
+			cropz1[0] = z1[animst];
+			cropz1[1] = z1[3]; 
+        }
 	}		
 		  
 	//Direções Movimentos
@@ -233,14 +289,17 @@
                 pAlien.bombas += 1;
                 bomba.posx1 = pAlien.posx;
                 bomba.posy1 = pAlien.posy + 15;
+                setTimeout('getSecs()',1000);
             } else if (pAlien.bombas == 1) {
                 pAlien.bombas += 1;
                 bomba.posx2 = pAlien.posx;
                 bomba.posy2 = pAlien.posy + 15;
+                setTimeout('getSecs()',1000);
             } else if (pAlien.bombas == 2) {
                 pAlien.bombas += 1;
                 bomba.posx3 = pAlien.posx;
                 bomba.posy3 = pAlien.posy + 15;
+                setTimeout('getSecs()',1000);
             }
         }
         if(direction == 88){
@@ -248,14 +307,17 @@
                 pZombie.bombas += 1;
                 bomba.posx4 = pZombie.posx;
                 bomba.posy4 = pZombie.posy + 17.5;
+                setTimeout('getSecs()',1000);
             } else if (pZombie.bombas == 1) {
                 pZombie.bombas += 1;
                 bomba.posx5 = pZombie.posx;
                 bomba.posy5 = pZombie.posy + 17.5;
+                setTimeout('getSecs()',1000);
             } else if (pZombie.bombas == 2) {
                 pZombie.bombas += 1;
                 bomba.posx6 = pZombie.posx;
                 bomba.posy6 = pZombie.posy + 17.5;
+                setTimeout('getSecs()',1000);
             }
         }
 	}
