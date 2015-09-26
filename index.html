@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--Blue Ararainha by JegueBauer Pvnll98 & gitmao-->
 <!-- Ararinha azul em perigo-->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,16 +17,20 @@
 	var pZombie = {
 		altura:64,
 		largura:64,
-		posx:0,
-		posy: 0,
+		posx: 790,
+		posy: 528,
+		posax: 0,
+		posay: 0,
         bombas: 0,
 		csprite:new Image()
 	};
     var pAlien = {
         altura:57,
         largura:57,
-        posx:790,
-        posy: 528,
+        posx:0,
+        posy: 0,
+        posax: 0,
+        posay: 0,
         bombas: 0,
         csprite:new Image()
     };
@@ -95,19 +99,6 @@
     var sMins = 0;
     var sHors = 0;
     
-    function getSecs(){
-	sSecs++;
-	if(sSecs==60){sSecs=0;sMins++;
-    if(sMins<=9)sMins="0"+sMins;
-    }
-	if(sMins==60){sMins="0"+0;sHors++;
-    if(sHors<=9)sHors="0"+sHors;
-	}
-	if(sSecs<=9)sSecs="0"+sSecs;
-    setTimeout('getSecs()',1000);
-
-	}
-	
 	function init(){
         
 		canvas = document.getElementById("meuCanvas");
@@ -131,9 +122,7 @@
         if(pAlien.posy > 535){
             pAlien.posy = 534.5;
         }
-        
-       
-        
+                
         if(pZombie.posx < 20){
             pZombie.posx = 20.5;
         }
@@ -145,65 +134,315 @@
         }
         if(pZombie.posy > 528){
             pZombie.posy = 527.5;
-        }  
+        }
+
+	    //1 Fileira Alien
+        if (pAlien.posx > 73 && pAlien.posx < 133 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 73 && pAlien.posx < 133 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 73 && pAlien.posx < 133 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 73 && pAlien.posx < 133 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 73 && pAlien.posx < 133 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+	    //2 Fileira Alien
+        if (pAlien.posx > 200 && pAlien.posx < 260 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 200 && pAlien.posx < 260 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 200 && pAlien.posx < 260 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 200 && pAlien.posx < 260 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 200 && pAlien.posx < 260 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+
+	    //3 Fileira Alien
+        if (pAlien.posx > 320 && pAlien.posx < 380 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 320 && pAlien.posx < 380 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 320 && pAlien.posx < 380 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 320 && pAlien.posx < 380 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 320 && pAlien.posx < 380 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+	    //4 Fileira Alien
+        if (pAlien.posx > 440 && pAlien.posx < 500 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 440 && pAlien.posx < 500 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 440 && pAlien.posx < 500 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 440 && pAlien.posx < 500 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 440 && pAlien.posx < 500 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+	    //5 Fileira Alien
+        if (pAlien.posx > 560 && pAlien.posx < 620 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 560 && pAlien.posx < 620 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 560 && pAlien.posx < 620 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 560 && pAlien.posx < 620 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 560 && pAlien.posx < 620 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+	    //6 Fileira Alien
+        if (pAlien.posx > 680 && pAlien.posx < 740 && pAlien.posy > 45 && pAlien.posy < 120) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 680 && pAlien.posx < 740 && pAlien.posy > 140 && pAlien.posy < 225) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 680 && pAlien.posx < 740 && pAlien.posy > 245 && pAlien.posy < 325) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 680 && pAlien.posx < 740 && pAlien.posy > 340 && pAlien.posy < 420) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+        if (pAlien.posx > 680 && pAlien.posx < 740 && pAlien.posy > 440 && pAlien.posy < 520) {
+            pAlien.posx = pAlien.posax;
+            pAlien.posy = pAlien.posay;
+        }
+
+	    // ---------------------------------------------------------------------------
+
+	    //1 Fileira Zombie
+        if (pZombie.posx > 73 && pZombie.posx < 133 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 73 && pZombie.posx < 133 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 73 && pZombie.posx < 133 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 73 && pZombie.posx < 133 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 73 && pZombie.posx < 133 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+	    //2 Fileira Zombie
+        if (pZombie.posx > 200 && pZombie.posx < 260 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 200 && pZombie.posx < 260 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 200 && pZombie.posx < 260 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 200 && pZombie.posx < 260 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 200 && pZombie.posx < 260 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+	    //3 Fileira Zombie
+        if (pZombie.posx > 320 && pZombie.posx < 380 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 320 && pZombie.posx < 380 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 320 && pZombie.posx < 380 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 320 && pZombie.posx < 380 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 320 && pZombie.posx < 380 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+	    //4 Fileira Zombie
+        if (pZombie.posx > 440 && pZombie.posx < 500 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 440 && pZombie.posx < 500 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 440 && pZombie.posx < 500 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 440 && pZombie.posx < 500 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 440 && pZombie.posx < 500 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+	    //5 Fileira Zombie
+        if (pZombie.posx > 560 && pZombie.posx < 620 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 560 && pZombie.posx < 620 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 560 && pZombie.posx < 620 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 560 && pZombie.posx < 620 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 560 && pZombie.posx < 620 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+	    //6 Fileira Zombie
+        if (pZombie.posx > 680 && pZombie.posx < 740 && pZombie.posy > 35 && pZombie.posy < 120) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 680 && pZombie.posx < 740 && pZombie.posy > 130 && pZombie.posy < 225) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 680 && pZombie.posx < 740 && pZombie.posy > 235 && pZombie.posy < 325) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 680 && pZombie.posx < 740 && pZombie.posy > 330 && pZombie.posy < 420) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+        if (pZombie.posx > 680 && pZombie.posx < 740 && pZombie.posy > 430 && pZombie.posy < 520) {
+            pZombie.posx = pZombie.posax;
+            pZombie.posy = pZombie.posay;
+        }
+
+
+        //
+
         
         ctx.drawImage(pAlien.csprite,crop[0],crop[1],pAlien.largura,pAlien.altura,pAlien.posx,pAlien.posy,pAlien.largura,pAlien.altura);
         ctx.drawImage(pZombie.csprite,cropz[0],cropz[1],pZombie.largura,pZombie.altura,pZombie.posx,pZombie.posy,pZombie.largura,pZombie.altura);
         ctx.drawImage(poderZ1.csprite,cropz1[0],cropz1[1],poderZ1.largura,poderZ1.altura,poderZ1.posx,poderZ1.posy,poderZ1.largura,poderZ1.altura);
         
-        if(pAlien.bombas == 1){
-            
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
-            
-        
+        if(pAlien.bombas == 1){            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);        
         }
         else if (pAlien.bombas == 2) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
-            
-            
-            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);            
         }
         else if (pAlien.bombas == 3) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx1, bomba.posy1, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx2, bomba.posy2, bomba.largura, bomba.altura);
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx3, bomba.posy3, bomba.largura, bomba.altura);
-            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx3, bomba.posy3, bomba.largura, bomba.altura);            
         }
         if (pZombie.bombas == 1) {
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
-            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);            
         }
         else if (pZombie.bombas == 2) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
-            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);            
         }
         else if (pZombie.bombas == 3) {
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx4, bomba.posy4, bomba.largura, bomba.altura);
             ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx5, bomba.posy5, bomba.largura, bomba.altura);
-            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx6, bomba.posy6, bomba.largura, bomba.altura);
-            
+            ctx.drawImage(bomba.csprite, 0, 1, bomba.largura, bomba.altura, bomba.posx6, bomba.posy6, bomba.largura, bomba.altura);            
         } 
-        if (sSecs == 3){
-            alert("Deu 3 segundos, hora do ataque");
-            poderZ1.posx = bomba.posx;
-            poderZ1.posy = bomba.posy;
-            getSecs().break;
-            animstz1 = animstz1 + 1;
-			if(animstz1 > 3){
-			animstz1 = 0
-			}
-			cropz1[0] = z1[animst];
-			cropz1[1] = z1[3]; 
-        }
 	}		
 		  
 	//Direções Movimentos
 	function entrada(direction){
 	    //alert(direction);
 		//Cima = 87 - 38 | Baixo = 83 - 40
-		if(direction == 38){
+	    if (direction == 38) {
+	        pAlien.posay = pAlien.posy;
 			pAlien.posy = pAlien.posy - 10;
 			animst = animst + 1;
 			if(animst > 3){
@@ -212,7 +451,8 @@
 			crop[0] = pa[animst];
 			crop[1] = pa[3];            
 		}
-		if(direction == 40){
+	    if (direction == 40) {
+	        pAlien.posay = pAlien.posy;
 			pAlien.posy = pAlien.posy + 10;
 			animst = animst + 1;
 			if(animst > 3){
@@ -222,7 +462,8 @@
 			crop[1] = pa[0];           
 		}
 		//Esquerda = 65 - 37 | Direita = 68 - 39
-		if(direction == 37){
+	    if (direction == 37) {
+	        pAlien.posax = pAlien.posx;
             pAlien.posx = pAlien.posx - 10;
 			animst = animst + 1;
 			if(animst > 3){
@@ -232,7 +473,8 @@
 			crop[1] = pa[1];            
             
 		}
-		if(direction == 39){
+	    if (direction == 39) {
+	        pAlien.posax = pAlien.posx;
 			pAlien.posx = pAlien.posx + 10;
 			animst = animst + 1;
 			if(animst > 3){
@@ -243,8 +485,9 @@
 		}
 
         //---------------- ZOMBIE
-        if(direction == 87){
-			pZombie.posy = pZombie.posy - 10;
+	    if (direction == 87) {
+	        pZombie.posay = pZombie.posy;
+	        pZombie.posy = pZombie.posy - 10;
 			animstz = animstz + 1;
 			if(animstz > 5){
 			animstz = 0;
@@ -252,7 +495,8 @@
 			cropz[0] = pz[animstz];
 			cropz[1] = pz[3];            
 		}
-		if(direction == 83){
+	    if (direction == 83) {
+	        pZombie.posay = pZombie.posy;
 			pZombie.posy = pZombie.posy + 10;
 			animstz = animstz + 1;
 			if(animstz > 5){
@@ -262,7 +506,8 @@
 			cropz[1] = pz[0];            
 		}
 		//Esquerda = 65 - 37 | Direita = 68 - 39
-		if(direction == 65){
+	    if (direction == 65) {
+	        pZombie.posax = pZombie.posx;
             pZombie.posx = pZombie.posx - 10;
 			animstz = animstz + 1;
 			if(animstz > 5){
@@ -272,7 +517,8 @@
 			cropz[1] = pz[2];            
             
 		}
-		if(direction == 68){
+	    if (direction == 68) {
+	        pZombie.posax = pZombie.posx;
 			pZombie.posx = pZombie.posx + 10;
 			animstz = animstz + 1;
 			if(animstz > 5){
@@ -289,17 +535,14 @@
                 pAlien.bombas += 1;
                 bomba.posx1 = pAlien.posx;
                 bomba.posy1 = pAlien.posy + 15;
-                setTimeout('getSecs()',1000);
             } else if (pAlien.bombas == 1) {
                 pAlien.bombas += 1;
                 bomba.posx2 = pAlien.posx;
                 bomba.posy2 = pAlien.posy + 15;
-                setTimeout('getSecs()',1000);
             } else if (pAlien.bombas == 2) {
                 pAlien.bombas += 1;
                 bomba.posx3 = pAlien.posx;
                 bomba.posy3 = pAlien.posy + 15;
-                setTimeout('getSecs()',1000);
             }
         }
         if(direction == 88){
@@ -307,17 +550,14 @@
                 pZombie.bombas += 1;
                 bomba.posx4 = pZombie.posx;
                 bomba.posy4 = pZombie.posy + 17.5;
-                setTimeout('getSecs()',1000);
             } else if (pZombie.bombas == 1) {
                 pZombie.bombas += 1;
                 bomba.posx5 = pZombie.posx;
                 bomba.posy5 = pZombie.posy + 17.5;
-                setTimeout('getSecs()',1000);
             } else if (pZombie.bombas == 2) {
                 pZombie.bombas += 1;
                 bomba.posx6 = pZombie.posx;
                 bomba.posy6 = pZombie.posy + 17.5;
-                setTimeout('getSecs()',1000);
             }
         }
 	}
